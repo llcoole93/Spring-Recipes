@@ -1,6 +1,7 @@
 package handler.springframework.springrecipes.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * @author Evan on 11/3/2021
@@ -19,13 +20,17 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    //todo add
-    //private Difficulty difficulty;
+
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
 
     @OneToMany(cascade= CascadeType.ALL, mappedBy = "recipe")
-    private Ingredient ingredient;
+    private Set<Ingredient> ingredient;
+
+    @ManyToMany
+    @JoinTable(name = "recipe_category",
+        joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
 
     @Lob
     private Byte[] image;

@@ -21,6 +21,8 @@ public class Recipe {
     private String directions;
     //todo add
     //private Difficulty difficulty;
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
 
     @OneToMany(cascade= CascadeType.ALL, mappedBy = "recipe")
     private Ingredient ingredient;

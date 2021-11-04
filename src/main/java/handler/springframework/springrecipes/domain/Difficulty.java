@@ -7,5 +7,5 @@ import javax.persistence.Enumerated;
  * @author Evan on 11/3/2021
  */
 public enum Difficulty {
-    EASY, MEDIUM, HARD;
+    EASY, MEDIUM, MODERATE, HARD;
 }
